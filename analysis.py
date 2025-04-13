@@ -119,14 +119,15 @@ def check_io_size(input_data, hash_data):
         return False
 
 
-N = 7
-input_data = bytes([i % 256 for i in range(2 ** N)])
+if __name__ == "__main__":
+    N = 7
+    input_data = bytes([i % 256 for i in range(2 ** N)])
 
-test_determinism(qhash, input_data)
-test_entropy_preservation(qhash, input_size=2 ** N)
-# test_computational_difficulty(qhash) # use this when using atleast N = 8, to see some lines
-# print("[CIRCUIT COMPLEXITY]")
-# complexity = get_circuit_complexity(qhash, N)
-# plot_complexity(complexity)
-test_preimage_resistance(qhash, input_size=2 ** N)
-test_collision_resistance(qhash, input_size=2 ** N)
+    test_determinism(qhash, input_data)
+    test_entropy_preservation(qhash, input_size=2 ** N)
+    # test_computational_difficulty(qhash) # use this when using atleast N = 8, to see some lines
+    # print("[CIRCUIT COMPLEXITY]")
+    # complexity = get_circuit_complexity(qhash, N)
+    # plot_complexity(complexity)
+    test_preimage_resistance(qhash, input_size=2 ** N)
+    test_collision_resistance(qhash, input_size=2 ** N)
